@@ -53,6 +53,7 @@ The best approach is to contact me by email (ahandel@uga.edu) or through the Git
 * testthat
 * codecov
 * rmarkdown for vignette and shiny documentation
+* pkgdown for package doc site
 * packages needed: see DESCRIPTION file
 * Rtools needs to be installed (on Windows)
 * All libraries/packages needed by this one should be loaded via the DESCRIPTION file and not in separate R files
@@ -74,5 +75,13 @@ spelling::spell_check_files(files)
 * Run clean and rebuild, then build and reload using menu, or devtools::load_all()
 * Run the check, fix any errors 
 
+### To-do at release time 
+* Re-build documentation, re-build package
+* Re-build vignettes with devtools::build_vignettes()
+* Run check and make sure no problems occur
+* Re-create package site with pkgdown::build_site()
+* Sync everything to github
+* Check vignette and function references on website, fix errors
+* Do a test run of devtools::release()
 
 
