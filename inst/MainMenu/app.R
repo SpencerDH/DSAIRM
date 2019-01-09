@@ -138,6 +138,7 @@ server <- function(input, output, session) {
               x2 = x1[! (names(x1) %in% appNames)] #remove inputs that are action buttons for apps
               x3 = (x2[! (names(x2) %in% c('submitBtn','Exit','DSAIRM') ) ]) #remove further inputs
               modelsettings = x3[!grepl("*selectized$", names(x3))] #remove any input with selectized
+              # print(modelsettings) ### Debugging line
               if (is.null(modelsettings$nreps)) {modelsettings$nreps <- 1} #if there is no UI input for replicates, assume reps is 1
               #if no random seed is set in UI, set it to 123. Only important for models that have a stochastic component
               if (is.null(modelsettings$rngseed)) {modelsettings$rngseed <- 123}

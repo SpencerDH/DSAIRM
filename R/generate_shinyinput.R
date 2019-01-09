@@ -16,7 +16,6 @@
 #not used in DSAIRM, might need to turn on again for modelbuilder
 generate_shinyinput <- function(mbmodel, otherinputs, output)
 {
-
     #function to wrap input elements in specified class
     #allows further styling with CSS
     myclassfct = function (x) {
@@ -29,7 +28,7 @@ generate_shinyinput <- function(mbmodel, otherinputs, output)
     ###########################################
     if (class(mbmodel)=="character" )
     {
-
+        print("Character") ### Debugging line
         #file containing model
         fcfile = paste0(system.file("simulatorfunctions", package = "DSAIRM"),'/',mbmodel,'.R')
         #get every line in documentation part of file that starts with @param
@@ -53,7 +52,7 @@ generate_shinyinput <- function(mbmodel, otherinputs, output)
     ###########################################
     if (class(mbmodel)=="list")
     {
-
+        print("List") ### Debugging line
         nvars = length(mbmodel$var)  #number of variables/compartments in model
         npars = length(mbmodel$par)  #number of parameters in model
         ntime = length(mbmodel$time)  #number of time variables in model
