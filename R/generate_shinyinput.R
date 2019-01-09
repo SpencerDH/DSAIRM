@@ -31,6 +31,7 @@ generate_shinyinput <- function(mbmodel, otherinputs, output)
         print("Character") ### Debugging line
         #file containing model
         fcfile = paste0(system.file("simulatorfunctions", package = "DSAIRM"),'/',mbmodel,'.R')
+        print(fcfile) ### Debugging line
         #get every line in documentation part of file that starts with @param
 
         # turn each @param statement into a string for display
