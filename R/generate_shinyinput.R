@@ -28,10 +28,8 @@ generate_shinyinput <- function(mbmodel, otherinputs, output)
     ###########################################
     if (class(mbmodel)=="character" )
     {
-        print("Character") ### Debugging line
         #file containing model
         fcfile = paste0(system.file("simulatorfunctions", package = "DSAIRM"),'/',mbmodel,'.R')
-        print(fcfile) ### Debugging line
         #get every line in documentation part of file that starts with @param
 
         # turn each @param statement into a string for display
@@ -40,8 +38,6 @@ generate_shinyinput <- function(mbmodel, otherinputs, output)
         #remove function arguments that are not numeric
         ip = ip[unlist(lapply(ip,is.numeric))]
         nvars = length(ip)  #number of variables/compartments in model
-        print(ip) ### Debugging line
-        print(nvars) ### Debugging line
         modelargs = lapply(1:nvars, function(n) {
             myclassfct(
                 numericInput(names(ip[n]), names(ip[n]), value = ip[n][[1]])

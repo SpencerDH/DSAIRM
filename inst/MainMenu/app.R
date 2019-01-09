@@ -59,10 +59,11 @@ server <- function(input, output, session) {
       }
       else
       #if no mbmodel Rdata file exists,  extract function inputs and turn them into shiny input elements
-      #this uses the 1st function provided by the settings file and stored in crrentsimfct
+      #this uses the 1st function provided by the settings file and stored in currentsimfct
       #this only works for numeric inputs, any others will be removed and need to be
       #added to shiny UI using the settings file
       {
+        print("Generation") ### Debugging line
         currentmbmodel <<- NULL
         DSAIRM::generate_shinyinput(mbmodel = currentsimfct[1], otherinputs = currentotherinputs, output = output) #indexing sim function in case there are multiple
       }
@@ -125,7 +126,7 @@ server <- function(input, output, session) {
     #start code that listens to the 'run simulation' button and runs a model for the specified settings
     #######################################################
       observeEvent(input$submitBtn, {
-
+        print("Clicked submit button") ### Debugging line
 
         #run model with specified settings
         #run simulation, show a 'running simulation' message
@@ -138,7 +139,6 @@ server <- function(input, output, session) {
               x2 = x1[! (names(x1) %in% appNames)] #remove inputs that are action buttons for apps
               x3 = (x2[! (names(x2) %in% c('submitBtn','Exit','DSAIRM') ) ]) #remove further inputs
               modelsettings = x3[!grepl("*selectized$", names(x3))] #remove any input with selectized
-              # print(modelsettings) ### Debugging line
               if (is.null(modelsettings$nreps)) {modelsettings$nreps <- 1} #if there is no UI input for replicates, assume reps is 1
               #if no random seed is set in UI, set it to 123. Only important for models that have a stochastic component
               if (is.null(modelsettings$rngseed)) {modelsettings$rngseed <- 123}
@@ -157,7 +157,7 @@ server <- function(input, output, session) {
               output$text <- renderText({
                 generate_text(result) })
             }) #end with-progress wrapper
-      }, #end the expression being evaluated by observeevent
+      } #end the expression being evaluated by observeevent
       #once = TRUE
       ) #end observe-event for analyze model submit button
 
