@@ -12,7 +12,7 @@
 
 run_model <- function(modelsettings, modelfunction) {
 
-
+  print("Running model") ### Debugging line
   datall = NULL #will hold data for all different models and replicates
   #ct = 1 #counter to keep track of number of simulations that ran
 

@@ -37,7 +37,7 @@ server <- function(input, output, session) {
       #variable modeltype in the settings file is the type of the model to be run or NULL
       #variable mbmoddelfile is the name of the mbmodel Rdata file or NULL
       #variable otherinputs contains additional shiny UI elements
-      #one wants to display that are not generated automaticall by functions above
+      #one wants to display that are not generated automatically by functions above
       #for instance all non-numeric inputs need to be provided separately. If not needed, it is NULL
       settingfilename = paste0(appdir,'/',currentApp,'/',currentApp,'_settings.R')
       source(settingfilename) #source the file with additional settings to load them
